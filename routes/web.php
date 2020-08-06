@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/', 'HomeController@show');
+Route::get('/home', 'HomeController@show'); //In task 2 this route is just "/"
 
 Route::get('/register', 'AuthController@form');
 
@@ -20,4 +20,8 @@ Route::post('/welcome', 'AuthController@greet');
 
 Route::get('/master', function() {
     return view('master');
+});
+
+Route::get('/', function() {
+    return view('task');
 });
