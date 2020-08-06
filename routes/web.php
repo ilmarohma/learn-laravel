@@ -17,3 +17,7 @@ Route::get('/', 'HomeController@show');
 Route::get('/register', 'AuthController@form');
 
 Route::post('/welcome', 'AuthController@greet');
+
+Route::get('/master', function() {
+    return view('master');
+});
