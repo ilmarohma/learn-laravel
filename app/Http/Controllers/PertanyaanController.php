@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pertanyaans;
 use Illuminate\Http\Request;
+use DB;
 
 class PertanyaanController extends Controller
 {
@@ -26,7 +27,7 @@ class PertanyaanController extends Controller
      */
     public function create()
     {
-        //
+        return view('pertanyaans.create');
     }
 
     /**
@@ -37,7 +38,23 @@ class PertanyaanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $request->validate([
+        //     'judul' => 'required',
+        //     'isi' => 'required',
+        // ]);
+        
+        // Pertanyaans::create($request-all());
+
+        // return redirect()->route('pertanyaan.index');
+
+        $query = DB::table('pertanyaans') -> insert([
+            'judul' => $request['judul'], 
+            'isi' => $request['isi'],
+            'tanggal_dibuat' => $ldate = date('Y-m-d H:i:s'),
+            'tanggal_diperbaharui' => $ldate = date('Y-m-d H:i:s'),
+        ]);
+
+        return redirect()->route('pertanyaan.index');
     }
 
     /**
