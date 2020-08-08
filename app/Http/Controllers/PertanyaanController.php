@@ -108,8 +108,12 @@ class PertanyaanController extends Controller
      * @param  \App\Pertanyaans  $pertanyaans
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pertanyaans $pertanyaans)
+    public function destroy($pertanyaans)
     {
-        //
+        $query = DB::table('pertanyaans') 
+        -> where('id', $pertanyaans) 
+        -> delete();
+
+        return redirect()->route('pertanyaan.index');
     }
 }

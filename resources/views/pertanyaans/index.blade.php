@@ -1,6 +1,9 @@
 @extends('master')
 
 @section('content')
+<br>
+<a class="btn btn-primary" href="{{ route('pertanyaan.create') }}">+ Tambah pertanyaan</a>
+<br><br>
 <table class="table table-striped table-bordered">
     <tr>
         <th>No</th>
