@@ -89,9 +89,17 @@ class PertanyaanController extends Controller
      * @param  \App\Pertanyaans  $pertanyaans
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pertanyaans $pertanyaans)
+    public function update($pertanyaans, Request $request)
     {
-        //
+        $query = DB::table('pertanyaans') 
+        -> where('id', $pertanyaans) 
+        -> update([
+            'judul' => $request['judul'], 
+            'isi' => $request['isi'],
+            'tanggal_diperbaharui' => $ldate = date('Y-m-d H:i:s'),
+        ]);
+
+        return redirect()->route('pertanyaan.index');
     }
 
     /**
