@@ -18,6 +18,18 @@
         <td>{{ $prt->isi }}</td>
         <td>{{ $prt->tanggal_dibuat }}</td>
         <td>{{ $prt->tanggal_diperbaharui }}</td>
+        <td>
+            <form action="{{ route('pertanyaan.destroy',$prt->id) }}" method="POST">
+   
+                <a class="btn btn-info" href="{{ route('pertanyaan.show',$prt->id) }}">Show</a>
+
+                <a class="btn btn-primary" href="{{ route('pertanyaan.edit',$prt->id) }}">Edit</a>
+
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </td>
     </tr>
     @endforeach
 </table>

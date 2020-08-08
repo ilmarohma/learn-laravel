@@ -63,9 +63,10 @@ class PertanyaanController extends Controller
      * @param  \App\Pertanyaans  $pertanyaans
      * @return \Illuminate\Http\Response
      */
-    public function show(Pertanyaans $pertanyaans)
+    public function show($pertanyaans)
     {
-        //
+        $pertanyaan = DB::table('pertanyaans')->where('id', $pertanyaans)->first();
+        return view('pertanyaans.detail', compact('pertanyaan'));
     }
 
     /**
@@ -74,9 +75,11 @@ class PertanyaanController extends Controller
      * @param  \App\Pertanyaans  $pertanyaans
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pertanyaans $pertanyaans)
+    public function edit($pertanyaans)
     {
-        //
+        $pertanyaan = DB::table('pertanyaans')->where('id', $pertanyaans)->first();
+
+        return view('pertanyaans.edit', compact('pertanyaan'));
     }
 
     /**
